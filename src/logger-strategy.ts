@@ -48,6 +48,6 @@ export default class LoggerDemo {
         loggingService = new LoggingService(new LoggerToAPI());
         loggingService.log("MessageForAPI");
         
-        console.log("\n\n Strategy PAttern Logger Demo ends Here: \n\n")
+        console.log("\n\n Strategy PAttern Logger Demo ends Here! \n\n")
     }
 }
