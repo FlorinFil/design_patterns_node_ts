@@ -2,6 +2,8 @@ interface LoggerFactory {
     createErrorLogger(): AbstractErrorLogger;
 
     createWarningLogger(): AbstractWarningLogger;
+
+    createInfoLogger(): AbstractInfoLogger;
 }
 
 class LoggerToApiFactory implements LoggerFactory {
@@ -10,6 +12,9 @@ class LoggerToApiFactory implements LoggerFactory {
     }
     public createWarningLogger(): AbstractWarningLogger {
         return new WarningLoggerToApi();
+    }
+    public createInfoLogger(): AbstractInfoLogger {
+        return new InfoLoggerToApi();
     }
 
 }
@@ -23,6 +28,10 @@ class LoggerToFileFactory implements LoggerFactory {
         return new WarningLoggerToFile();
     }
 
+    public createInfoLogger(): AbstractInfoLogger {
+        return new InfoLoggerToFile();
+    }
+
 }
 
 interface AbstractErrorLogger {
@@ -32,13 +41,13 @@ interface AbstractErrorLogger {
 
 class ErrorLoggerToApi implements AbstractErrorLogger {
     public logError(): string {
-        return 'Error for API';
+        return 'Sending Error for API';
     }
 }
 
 class ErrorLoggerToFile implements AbstractErrorLogger {
     public logError(): string {
-        return 'Error for File';
+        return 'Writing Error for File';
     }
 }
 
@@ -46,13 +55,8 @@ interface AbstractWarningLogger {
 
     logWarning(): string;
 
-    /**
-     * ...but it also can collaborate with the ProductA.
-     *
-     * The Abstract Factory makes sure that all products it creates are of the
-     * same variant and thus, compatible.
-     */
-    logImportantWarning(collaborator: AbstractErrorLogger): string;
+    // Sorry, I have no idea how to make interact the error, warning and/or info. Because I don't need a warning to be shown as error or anything similar.
+    // logImportantWarning(collaborator: AbstractErrorLogger): string;
 }
 
 class WarningLoggerToApi implements AbstractWarningLogger {
@@ -61,10 +65,6 @@ class WarningLoggerToApi implements AbstractWarningLogger {
         return 'Sending a warning to an Api';
     }
 
-    public logImportantWarning(collaborator: AbstractErrorLogger): string {
-        const result = collaborator.logError();
-        return `Very Important! (${result})`;
-    }
 }
 
 class WarningLoggerToFile implements AbstractWarningLogger {
@@ -73,18 +73,43 @@ class WarningLoggerToFile implements AbstractWarningLogger {
         return 'Writing a warning to a file';
     }
 
-    public logImportantWarning(collaborator: AbstractErrorLogger): string {
-        const result = collaborator.logError();
-        return `Bold (${result})`;
-    }
+    // public logImportantWarning(collaborator: AbstractErrorLogger): string {
+    //     const result = collaborator.logError();
+    //     return `Bold (${result})`;
+    // }
 }
 
-function clientCode(logger: LoggerFactory) {
-    const errorLogger = logger.createErrorLogger();
-    const warningLogger = logger.createWarningLogger();
+interface AbstractInfoLogger {
+
+    logInfo(): string;
+
+}
+
+class InfoLoggerToApi implements AbstractInfoLogger {
+
+    public logInfo(): string {
+        return 'Sending info to an Api';
+    }
+
+}
+
+class InfoLoggerToFile implements AbstractInfoLogger {
+
+    public logInfo(): string {
+        return 'Writing info to a file';
+    }
+
+}
+
+function clientCode(loggerFactory: LoggerFactory) {
+    const errorLogger = loggerFactory.createErrorLogger();
+    const warningLogger = loggerFactory.createWarningLogger();
+    const infoLogger = loggerFactory.createInfoLogger();
 
     console.log(warningLogger.logWarning());
-    console.log(warningLogger.logImportantWarning(errorLogger));
+    // console.log(warningLogger.logImportantWarning(errorLogger));
+    console.log(errorLogger.logError());
+    console.log(infoLogger.logInfo());
 }
 
 export default class AbstractFactoryDemo {
