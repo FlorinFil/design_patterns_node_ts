@@ -1,7 +1,7 @@
 {
   "name": "design-patterns",
   "version": "1.0.0",
-  "description": "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",
+  "description": "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",
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
