@@ -3,6 +3,7 @@ import LoggerDemo from "./logger-behavioral-strategy";
 import ObserverDemo from "./logger-behavioral-observer";
 import DecoratorDemo from "./logger-structural-decorator";
 import FactoryMethodDemo from "./logger-creational-factory-method";
+import AbstractFactoryDemo from "./logge-creactional-abstract-factory";
 const logger = Logger.getInstance();
 
 logger.log("singleton pattern implemented successfully");
@@ -14,3 +15,5 @@ ObserverDemo.startDemo();
 DecoratorDemo.start();  
 
 FactoryMethodDemo.start();
+
+AbstractFactoryDemo.start();
