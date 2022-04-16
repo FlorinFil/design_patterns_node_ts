@@ -7,6 +7,7 @@ import AbstractFactoryDemo from "./logger-creactional-abstract-factory";
 import BuilderDemo from "./logger-creational-builder";
 import FacadeDemo from "./logger-structural-facade";
 import ProxyDemo from "./logger-structural-proxy";
+import StateDemo from "./logger-behavioral-state";
 const logger = Logger.getInstance();
 
 logger.log("singleton pattern implemented successfully");
@@ -29,3 +30,5 @@ FacadeDemo.start();
 // looks like somthing simlar o the way Java treats the String class
 
 ProxyDemo.start();
+
+StateDemo.start();
