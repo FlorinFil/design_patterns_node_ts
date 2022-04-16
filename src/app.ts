@@ -5,6 +5,7 @@ import DecoratorDemo from "./logger-structural-decorator";
 import FactoryMethodDemo from "./logger-creational-factory-method";
 import AbstractFactoryDemo from "./logger-creactional-abstract-factory";
 import BuilderDemo from "./logger-creational-builder";
+import FacadeDemo from "./logger-structural-facade";
 const logger = Logger.getInstance();
 
 logger.log("singleton pattern implemented successfully");
@@ -20,3 +21,5 @@ FactoryMethodDemo.start();
 AbstractFactoryDemo.start();
 
 BuilderDemo.start();    
+
+FacadeDemo.start();
