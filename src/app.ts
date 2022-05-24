@@ -3,11 +3,12 @@ import LoggerDemo from "./logger-behavioral-strategy";
 import ObserverDemo from "./logger-behavioral-observer";
 import DecoratorDemo from "./logger-structural-decorator";
 import FactoryMethodDemo from "./logger-creational-factory-method";
-import AbstractFactoryDemo from "./logger-creactional-abstract-factory";
+import AbstractFactoryDemo from "./logger-creational-abstract-factory";
 import BuilderDemo from "./logger-creational-builder";
 import FacadeDemo from "./logger-structural-facade";
 import ProxyDemo from "./logger-structural-proxy";
 import StateDemo from "./logger-behavioral-state";
+import PrototypeDemo from "./logger-creational-prototype";
 const logger = Logger.getInstance();
 
 logger.log("singleton pattern implemented successfully");
@@ -32,3 +33,5 @@ FacadeDemo.start();
 ProxyDemo.start();
 
 StateDemo.start();
+
+PrototypeDemo.start();
