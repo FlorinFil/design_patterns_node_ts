@@ -9,6 +9,8 @@ import FacadeDemo from "./logger-structural-facade";
 import ProxyDemo from "./logger-structural-proxy";
 import StateDemo from "./logger-behavioral-state";
 import PrototypeDemo from "./logger-creational-prototype";
+import AdapterObjectDemo from "./logger-structural-adapter-object";
+import AdapterClassDemo from "./logger-structural-adapter-class";
 const logger = Logger.getInstance();
 
 logger.log("singleton pattern implemented successfully");
@@ -35,3 +37,7 @@ ProxyDemo.start();
 StateDemo.start();
 
 PrototypeDemo.start();
+
+AdapterObjectDemo.start();
+
+AdapterClassDemo.start();
